@@ -1,7 +1,6 @@
-from datetime import datetime, date, timedelta
+from datetime import datetime, timedelta
 from requests import Request
 from time import mktime
-from typing import Optional
 import parsedatetime as pdt
 import webbrowser
 
@@ -25,9 +24,9 @@ def create_invite_url(text: str) -> str:
     dates = '/'.join(map(dt_format, [start, end]))
 
     params = {
-            'action': 'TEMPLATE',
-            'text': text,
-            'dates': dates,
+        'action': 'TEMPLATE',
+        'text': text,
+        'dates': dates,
     }
     p = Request('GET', 'https://www.google.com/calendar/render',
                 params=params).prepare()
