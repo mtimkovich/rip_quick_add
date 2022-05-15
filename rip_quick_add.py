@@ -1,15 +1,3 @@
-"""
-# Quick Add
-https://gsuitetips.com/tips/calendar/use-quick-add-to-speed-up-google-calendar-entries/
-
-Steps:
-    1. Parse calendar text
-    2. Extract datetime
-        a. event name is the renaming text
-    3. Create google calendar event url
-        https://www.google.com/calendar/render?action=TEMPLATE&text=test&dates=20220514T071800%2F20220514T081800
-"""
-
 from datetime import datetime, date, timedelta
 from requests import Request
 from time import mktime
