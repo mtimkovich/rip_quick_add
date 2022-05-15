@@ -13,7 +13,7 @@ This is my attempt to recreate Quick Add in Python. My goal is to eventual put t
 `rip_quick_add.py`:
 1. Takes a text input,
 2. parses the input to find date info, and then
-3. returns a Google Calendar URL for add the event to your calendar.
+3. returns a Google Calendar URL for adding the event to your calendar.
 
 # Author
 
