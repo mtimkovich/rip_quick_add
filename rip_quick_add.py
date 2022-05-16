@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from time import mktime
+from typing import Optional
 import webbrowser
 
 import parsedatetime as pdt
@@ -11,21 +12,24 @@ cal = pdt.Calendar()
 
 def extract_datetime(text: str) -> tuple[datetime, int]:
     result = cal.parse(text)
+    if result[1] == 0:
+        raise ValueError('could not parse timestamp from event')
     dt = datetime.fromtimestamp(mktime(result[0]))
     return dt, result[1]
 
 
-# TODO: handle all the different flags.
 def dt_format(dt: datetime, flag: int) -> str:
     if flag == 1:
         return dt.strftime('%Y%m%d')
-    if flag == 3:
-        return dt.strftime('%Y%m%dT%H%M%S')
-    raise RuntimeError(f'unhandled flag {flag}')
+    return dt.strftime('%Y%m%dT%H%M%S')
 
 
-def create_invite_url(text: str) -> str:
-    start, flag = extract_datetime(text)
+def create_invite_url(text: str) -> Optional[str]:
+    try:
+        start, flag = extract_datetime(text)
+    except ValueError:
+        return None
+
     end = start + timedelta(hours=1)
     dates = '/'.join(dt_format(t, flag) for t in [start, end])
 
