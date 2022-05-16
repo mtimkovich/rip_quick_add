@@ -1,27 +1,33 @@
 from datetime import datetime, timedelta
-from requests import Request
 from time import mktime
-import parsedatetime as pdt
 import webbrowser
+
+import parsedatetime as pdt
+from requests import Request
 
 
 cal = pdt.Calendar()
 
 
-def extract_datetime(text: str) -> datetime:
+def extract_datetime(text: str) -> tuple[datetime, int]:
     result = cal.parse(text)
     dt = datetime.fromtimestamp(mktime(result[0]))
-    return dt
+    return dt, result[1]
 
 
-def dt_format(dt: datetime) -> str:
-    return dt.strftime('%Y%m%dT%H%M%S')
+# TODO: handle all the different flags.
+def dt_format(dt: datetime, flag: int) -> str:
+    if flag == 1:
+        return dt.strftime('%Y%m%d')
+    if flag == 3:
+        return dt.strftime('%Y%m%dT%H%M%S')
+    raise RuntimeError(f'unhandled flag {flag}')
 
 
 def create_invite_url(text: str) -> str:
-    start = extract_datetime(text)
+    start, flag = extract_datetime(text)
     end = start + timedelta(hours=1)
-    dates = '/'.join(map(dt_format, [start, end]))
+    dates = '/'.join(dt_format(t, flag) for t in [start, end])
 
     params = {
         'action': 'TEMPLATE',
