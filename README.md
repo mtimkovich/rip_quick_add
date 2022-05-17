@@ -20,6 +20,7 @@ To run the webapp:
 ```
 venv env
 source env/bin/activate.fish
+pip install -r requirements.txt
 flask run
 ```
 
