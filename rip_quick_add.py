@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 from time import mktime
 from typing import Optional
-import webbrowser
 
 import parsedatetime as pdt
 from requests import Request
@@ -49,4 +48,3 @@ if __name__ == '__main__':
     text = 'Dinner with Michael 7 p.m. tomorrow'
     url = create_invite_url(text)
     print(url)
-    # webbrowser.open(url)
