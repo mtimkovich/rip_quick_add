@@ -7,18 +7,19 @@ from requests import Request
 
 
 cal = pdt.Calendar()
-
+PDT_FAIL = 0
+PDT_DATE = 1
 
 def extract_datetime(text: str) -> Tuple[datetime, int]:
     result = cal.parse(text)
-    if result[1] == 0:
+    if result[1] == PDT_FAIL:
         raise ValueError('could not parse timestamp from event')
     dt = datetime.fromtimestamp(mktime(result[0]))
     return dt, result[1]
 
 
 def dt_format(dt: datetime, flag: int) -> str:
-    if flag == 1:
+    if flag == PDT_DATE:
         return dt.strftime('%Y%m%d')
     return dt.strftime('%Y%m%dT%H%M%S')
 
@@ -29,7 +30,11 @@ def create_invite_url(text: str) -> Optional[str]:
     except ValueError:
         return None
 
-    end = start + timedelta(hours=1)
+    if flag == PDT_DATE:
+        end = start + timedelta(days=1)
+    else:
+        end = start + timedelta(hours=1)
+
     dates = '/'.join(dt_format(t, flag) for t in [start, end])
 
     params = {
@@ -39,8 +44,6 @@ def create_invite_url(text: str) -> Optional[str]:
     }
     p = Request('GET', 'https://www.google.com/calendar/render',
                 params=params).prepare()
-    if p.url is None:
-        raise Exception()
     return p.url
 
 
