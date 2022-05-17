@@ -2,9 +2,5 @@
   "dependencies": {
     "moment": "^2.29.3",
     "sherlockjs": "^1.4.2"
-  },
-  "devDependencies": {
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
   }
 }

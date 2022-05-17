@@ -42,6 +42,6 @@ function createEventUrl(text) {
   return `${baseUrl}?${params}`;
 }
 
-// const text = 'Brunch tomorrow at 9:30am';
-// const url = createEventUrl(text);
-// console.log(url);
+const text = 'Brunch tomorrow at 9:30am';
+const url = createEventUrl(text);
+console.log(url);
