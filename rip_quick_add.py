@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from time import mktime
-from typing import Optional
+from typing import Optional, Tuple
 
 import parsedatetime as pdt
 from requests import Request
@@ -9,7 +9,7 @@ from requests import Request
 cal = pdt.Calendar()
 
 
-def extract_datetime(text: str) -> tuple[datetime, int]:
+def extract_datetime(text: str) -> Tuple[datetime, int]:
     result = cal.parse(text)
     if result[1] == 0:
         raise ValueError('could not parse timestamp from event')
