@@ -1,6 +1,12 @@
 {
   "dependencies": {
+    "@fastify/formbody": "^7.0.0",
+    "fastify": "^4.0.0-rc.2",
     "moment": "^2.29.3",
     "sherlockjs": "^1.4.2"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
   }
 }

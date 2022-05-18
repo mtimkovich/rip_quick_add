@@ -1,5 +1,5 @@
-const Sherlock = require('sherlockjs');
-const moment = require('moment');
+import Sherlock from 'sherlockjs';
+import moment from 'moment';
 
 function dateRange(start, end, isAllDay) {
   let formatString = 'YYYYMMDD[T]HHmmss';
@@ -12,6 +12,10 @@ function dateRange(start, end, isAllDay) {
 }
 
 function parse(text) {
+  if (!text) {
+    throw new Error('invalid input text');
+  }
+
   const { eventTitle, startDate, endDate, isAllDay } = Sherlock.parse(text);
   const start = moment(startDate);
   let end = moment(endDate);
@@ -33,15 +37,17 @@ function parse(text) {
   return { text: eventTitle, dates }
 }
 
-function createEventUrl(text) {
-  const data = parse(text);
+export function createEventUrl(text) {
+  let data;
+  try {
+    data = parse(text);
+  } catch {
+    return null;
+  }
+
   data.action = 'TEMPLATE';
 
   const baseUrl = 'https://www.google.com/calendar/render';
   const params = new URLSearchParams(data);
   return `${baseUrl}?${params}`;
 }
-
-const text = 'Brunch tomorrow at 9:30am';
-const url = createEventUrl(text);
-console.log(url);
