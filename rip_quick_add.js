@@ -26,11 +26,14 @@ function parse(text) {
 
   if (!end.isValid()) {
     end = start.clone();
-    if (isAllDay) {
-      end.add(1, 'days');
-    } else {
+
+    if (!isAllDay) {
       end.add(1, 'hours');
     }
+  }
+
+  if (isAllDay) {
+    end.add(1, 'days');
   }
 
   const dates = dateRange(start, end, isAllDay);
