@@ -2,7 +2,7 @@
 
 Quickly create Google Calendar events from plain text.
 
-![preview.jpg](https://raw.githubusercontent.com/mtimkovich/rip_quick_add/main/preview.jpg)
+![preview.gif](https://raw.githubusercontent.com/mtimkovich/rip_quick_add/main/preview.gif)
 
 [Quick Add][article] was a Google Calendar feature that existed from 2012–[2017][rip] that enabled creating calendar events from natural language text input. I loved it and they deprecated it from me ☹️. This is my attempt to carry on its legacy. It uses the [Sherlock][sherlock] library to extract time data from text.
 

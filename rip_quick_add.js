@@ -1,11 +1,13 @@
 import Sherlock from 'sherlockjs';
 import moment from 'moment';
 
-function dateRange(start, end, isAllDay) {
+function dateRange(start, end, isAllDay, utc=false) {
   let formatString = 'YYYYMMDD[T]HHmmss';
 
   if (isAllDay) {
     formatString = 'YYYYMMDD';
+  } else if (utc) {
+    formatString = 'YYYYMMDD[T]HHmmss[Z]';
   }
 
   return [start, end].map(t => t.format(formatString)).join('/');
@@ -14,6 +16,12 @@ function dateRange(start, end, isAllDay) {
 function parse(text) {
   if (!text) {
     throw new Error('invalid input text');
+  }
+
+  let utc = false;
+
+  if (/\bnow\b/.test(text)) {
+    utc = true;
   }
 
   const { eventTitle, startDate, endDate, isAllDay } = Sherlock.parse(text);
@@ -36,7 +44,7 @@ function parse(text) {
     end.add(1, 'days');
   }
 
-  const dates = dateRange(start, end, isAllDay);
+  const dates = dateRange(start, end, isAllDay, utc);
   return { text: eventTitle, dates }
 }
 
