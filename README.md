@@ -14,10 +14,13 @@ Quickly create Google Calendar events from plain text.
 
 ## Usage
 
+### Chrome Extension
 Install the Chrome extension from the [releases page][releases].
 
+### Web App
 Alternatively, I have a running implementation [on my website][max].
 
+#### Local
 If you want to run the webapp locally:
 
 ```
