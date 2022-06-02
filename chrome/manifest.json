@@ -7,7 +7,7 @@
     "contextMenus"
   ],
   "host_permissions": [
-    "https://timkovi.ch/rip_quick_add_api"
+    "https://timkovi.ch/*"
   ],
   "background": {
     "service_worker": "background.js"

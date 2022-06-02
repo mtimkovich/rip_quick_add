@@ -12,7 +12,10 @@ async function quickAdd(data) {
     });
 
     const url = (await response.json()).url;
-    chrome.tabs.create({url});
+
+    if (url) {
+        chrome.tabs.create({url});
+    }
 }
 
 chrome.runtime.onInstalled.addListener(() => {
@@ -22,5 +25,6 @@ chrome.runtime.onInstalled.addListener(() => {
         contexts: ['selection'],
     });
 
-    chrome.contextMenus.onClicked.addListener(quickAdd);
 });
+
+chrome.contextMenus.onClicked.addListener(quickAdd);
