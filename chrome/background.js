@@ -21,7 +21,7 @@ async function quickAdd(data) {
 chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
         id: 'id',
-        title: 'Add to calendar: "%s"',
+        title: 'Add to calendar: “%s”',
         contexts: ['selection'],
     });
 });
