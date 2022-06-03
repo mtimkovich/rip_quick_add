@@ -24,7 +24,6 @@ chrome.runtime.onInstalled.addListener(() => {
         title: 'Add to calendar: "%s"',
         contexts: ['selection'],
     });
-
 });
 
 chrome.contextMenus.onClicked.addListener(quickAdd);
