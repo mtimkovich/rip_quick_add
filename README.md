@@ -15,7 +15,7 @@ Quickly create Google Calendar events from plain text.
 ## Usage
 
 ### Chrome Extension
-Install the Chrome extension from the [releases page][releases].
+Install the Chrome extension from [Chrome Web Store][webstore].
 
 ### Web App
 Alternatively, I have a running implementation [on my website][max].
@@ -41,4 +41,4 @@ Max Timkovich
 [max]: https://timkovi.ch/rip_quick_add
 [sherlock]: https://github.com/neilgupta/Sherlock#readme
 [rip]: https://joshdance.medium.com/i-miss-google-cal-quick-add-d4beee62fd27
-[releases]: https://github.com/mtimkovich/rip_quick_add/releases
+[webstore]: https://chrome.google.com/webstore/detail/rip-quick-add/einookkhlkagdckkngcebldmicpilpmk
