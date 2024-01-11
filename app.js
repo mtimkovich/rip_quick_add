@@ -5,8 +5,8 @@ import { createEventUrl } from './rip_quick_add.js';
 const app = Fastify({ logger: true });
 app.register(FastifyBodyParser);
 
-app.post('/', async (request, reply) => {
-  const text = request.body.text;
+app.post('/rip_quick_add_api', async (req, reply) => {
+  const text = req.body.text;
   return {
     url: createEventUrl(text)
   };
