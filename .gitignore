@@ -1,3 +1,5 @@
+*.crx
+
 # Logs
 logs
 *.log

@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "@fastify/formbody": "^7.0.0",
+    "chrono-node": "^2.7.4",
     "fastify": "^4.0.0-rc.2",
-    "moment": "^2.29.3",
-    "sherlockjs": "^1.4.2"
+    "moment": "^2.29.3"
   },
   "type": "module",
   "scripts": {

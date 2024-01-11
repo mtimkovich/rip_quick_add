@@ -1,13 +1,11 @@
-import Sherlock from 'sherlockjs';
+import * as chrono from 'chrono-node';
 import moment from 'moment';
 
-function dateRange(start, end, isAllDay, utc=false) {
+function dateRange(start, end, isAllDay) {
   let formatString = 'YYYYMMDD[T]HHmmss';
 
   if (isAllDay) {
     formatString = 'YYYYMMDD';
-  } else if (utc) {
-    formatString = 'YYYYMMDD[T]HHmmss[Z]';
   }
 
   return [start, end].map(t => t.format(formatString)).join('/');
@@ -18,21 +16,29 @@ function parse(text) {
     throw new Error('invalid input text');
   }
 
-  let utc = false;
+  const results = chrono.parse(text);
 
-  if (/\bnow\b/.test(text)) {
-    utc = true;
+  if (results.length === 0) {
+    throw new Error('could not find time data');
   }
 
-  const { eventTitle, startDate, endDate, isAllDay } = Sherlock.parse(text);
-  const start = moment(startDate);
-  let end = moment(endDate);
+  const result = results[0];
+
+  const eventTitle = text.replace(result.text, "").trim();
+  const startDate = result.start;
+  const isAllDay = !startDate.isCertain('hour');
+  const start = moment(startDate.date());
+  let end = null;
+
+  if (result.end !== null) {
+    end = moment(result.end.date());
+  }
 
   if (!start.isValid()) {
     throw new Error('could not find time data');
   }
 
-  if (!end.isValid()) {
+  if (end === null || !end.isValid()) {
     end = start.clone();
 
     if (!isAllDay) {
@@ -44,7 +50,7 @@ function parse(text) {
     end.add(1, 'days');
   }
 
-  const dates = dateRange(start, end, isAllDay, utc);
+  const dates = dateRange(start, end, isAllDay);
   return { text: eventTitle, dates }
 }
 
@@ -52,6 +58,7 @@ export function createEventUrl(text) {
   let data;
   try {
     data = parse(text);
+    console.log(data);
   } catch {
     return null;
   }
@@ -61,4 +68,10 @@ export function createEventUrl(text) {
   const baseUrl = 'https://www.google.com/calendar/render';
   const params = new URLSearchParams(data);
   return `${baseUrl}?${params}`;
+}
+
+function main() {
+  const input = "Brunch with Gary and Mira tomorrow at 10:30am";
+  const url = createEventUrl(input);
+  console.log(url);
 }
