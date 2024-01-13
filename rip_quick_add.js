@@ -16,14 +16,10 @@ function dateRange(start, end, isAllDay) {
   return [start, end].map(t => t.format(formatString)).join('/');
 }
 
-function parse(text, localTz) {
-  if (!text) {
-    throw new Error('invalid input text');
-  }
-
-  // Custom chrono refiner
+// Custom chrono refiner
+function refiner(localTz) {
   const localTime = dayjs.tz(new Date(), localTz)
-  const localOffset = localTime.utcOffset() // returns in minutes
+  const localOffset = localTime.utcOffset()
   const custom = chrono.casual.clone()
   custom.refiners.push({
     refine: (context, results) => {
@@ -36,7 +32,15 @@ function parse(text, localTz) {
     }
   });
 
-  const results = custom.parse(text);
+  return custom
+}
+
+function parse(text, localTz) {
+  if (!text) {
+    throw new Error('invalid input text');
+  }
+
+  const results = refiner(localTz).parse(text);
 
   if (results.length === 0) {
     throw new Error('could not find time data');
@@ -50,34 +54,30 @@ function parse(text, localTz) {
   const start = dayjs(startDate.date()).tz(localTz);
   let end = null;
 
-  if (result.end !== null) {
-    end = dayjs(result.end.date());
-  }
-
   if (!start.isValid()) {
     throw new Error('could not find time data');
   }
 
-  if (end === null) {
+  if (result.end !== null) {
+    end = dayjs(result.end.date());
+  }
 
-    if (!isAllDay) {
+  if (end === null) {
+    if (isAllDay) {
+      end = start.add(1, 'days');
+    } else {
       end = start.add(1, 'hours');
     }
   }
-
-  if (isAllDay) {
-    end = start.add(1, 'days');
-  }
-
 
   const dates = dateRange(start, end, isAllDay);
   return { text: eventTitle, dates }
 }
 
-export function createEventUrl(text, timezone=undefined) {
+export function createEventUrl(text, localTz=undefined) {
   let data;
   try {
-    data = parse(text, timezone);
+    data = parse(text, localTz);
     console.log(data);
   } catch (err) {
     console.log(err);
