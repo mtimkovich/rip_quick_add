@@ -2,8 +2,8 @@
   "dependencies": {
     "@fastify/formbody": "^7.0.0",
     "chrono-node": "^2.7.4",
-    "fastify": "^4.0.0-rc.2",
-    "moment": "^2.29.3"
+    "dayjs": "^1.11.10",
+    "fastify": "^4.0.0-rc.2"
   },
   "type": "module",
   "scripts": {

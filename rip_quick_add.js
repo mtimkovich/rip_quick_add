@@ -1,5 +1,10 @@
 import * as chrono from 'chrono-node';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone.js';
+import utc from 'dayjs/plugin/utc.js';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 function dateRange(start, end, isAllDay) {
   let formatString = 'YYYYMMDD[T]HHmmss';
@@ -11,12 +16,31 @@ function dateRange(start, end, isAllDay) {
   return [start, end].map(t => t.format(formatString)).join('/');
 }
 
-function parse(text) {
+// Custom chrono refiner
+function refiner(localTz) {
+  const localTime = dayjs.tz(new Date(), localTz)
+  const localOffset = localTime.utcOffset()
+  const custom = chrono.casual.clone()
+  custom.refiners.push({
+    refine: (context, results) => {
+      results.forEach((result) => {
+        // Returns the time with the offset in included (must use minutes)
+        result.start.imply('timezoneOffset', localOffset)
+        result.end && result.end.imply('timezoneOffset', localOffset)
+      })
+      return results
+    }
+  });
+
+  return custom
+}
+
+function parse(text, localTz) {
   if (!text) {
     throw new Error('invalid input text');
   }
 
-  const results = chrono.parse(text);
+  const results = refiner(localTz).parse(text);
 
   if (results.length === 0) {
     throw new Error('could not find time data');
@@ -27,39 +51,36 @@ function parse(text) {
   const eventTitle = text.replace(result.text, "").trim();
   const startDate = result.start;
   const isAllDay = !startDate.isCertain('hour');
-  const start = moment(startDate.date());
+  const start = dayjs(startDate.date()).tz(localTz);
   let end = null;
-
-  if (result.end !== null) {
-    end = moment(result.end.date());
-  }
 
   if (!start.isValid()) {
     throw new Error('could not find time data');
   }
 
-  if (end === null || !end.isValid()) {
-    end = start.clone();
-
-    if (!isAllDay) {
-      end.add(1, 'hours');
-    }
+  if (result.end !== null) {
+    end = dayjs(result.end.date());
   }
 
-  if (isAllDay) {
-    end.add(1, 'days');
+  if (end === null) {
+    if (isAllDay) {
+      end = start.add(1, 'days');
+    } else {
+      end = start.add(1, 'hours');
+    }
   }
 
   const dates = dateRange(start, end, isAllDay);
   return { text: eventTitle, dates }
 }
 
-export function createEventUrl(text) {
+export function createEventUrl(text, localTz=undefined) {
   let data;
   try {
-    data = parse(text);
+    data = parse(text, localTz);
     console.log(data);
-  } catch {
+  } catch (err) {
+    console.log(err);
     return null;
   }
 
@@ -71,7 +92,13 @@ export function createEventUrl(text) {
 }
 
 function main() {
-  const input = "Brunch with Gary and Mira tomorrow at 10:30am";
-  const url = createEventUrl(input);
+  // const input = "Brunch with Gary and Mira tomorrow at 10:30am";
+  const input = "Event now";
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // const timezone = 'Etc/Utc';
+
+  const url = createEventUrl(input, timezone);
   console.log(url);
 }
+
+// main();
