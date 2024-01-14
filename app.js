@@ -5,12 +5,11 @@ import { createEventUrl } from './rip_quick_add.js';
 const app = Fastify({ logger: true });
 app.register(FastifyBodyParser);
 
-app.post('/rip_quick_add', async (request, reply) => {
+app.post('/rip_quick_add_api', async (request, reply) => {
   const text = request.body.text;
-  const timezone = request.body.timezone;
 
   return {
-    url: createEventUrl(text, timezone)
+    url: createEventUrl(text)
   };
 });
 

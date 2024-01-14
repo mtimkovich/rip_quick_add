@@ -1,10 +1,5 @@
 import * as chrono from 'chrono-node';
 import dayjs from 'dayjs';
-import timezone from 'dayjs/plugin/timezone.js';
-import utc from 'dayjs/plugin/utc.js';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 function dateRange(start, end, isAllDay) {
   let formatString = 'YYYYMMDD[T]HHmmss';
@@ -16,31 +11,12 @@ function dateRange(start, end, isAllDay) {
   return [start, end].map(t => t.format(formatString)).join('/');
 }
 
-// Custom chrono refiner
-function refiner(localTz) {
-  const localTime = dayjs.tz(new Date(), localTz)
-  const localOffset = localTime.utcOffset()
-  const custom = chrono.casual.clone()
-  custom.refiners.push({
-    refine: (context, results) => {
-      results.forEach((result) => {
-        // Returns the time with the offset in included (must use minutes)
-        result.start.imply('timezoneOffset', localOffset)
-        result.end && result.end.imply('timezoneOffset', localOffset)
-      })
-      return results
-    }
-  });
-
-  return custom
-}
-
-function parse(text, localTz) {
+function parse(text) {
   if (!text) {
     throw new Error('invalid input text');
   }
 
-  const results = refiner(localTz).parse(text);
+  const results = chrono.parse(text);
 
   if (results.length === 0) {
     throw new Error('could not find time data');
@@ -51,7 +27,7 @@ function parse(text, localTz) {
   const eventTitle = text.replace(result.text, "").trim();
   const startDate = result.start;
   const isAllDay = !startDate.isCertain('hour');
-  const start = dayjs(startDate.date()).tz(localTz);
+  const start = dayjs(startDate.date());
   let end = null;
 
   if (!start.isValid()) {
@@ -74,10 +50,10 @@ function parse(text, localTz) {
   return { text: eventTitle, dates }
 }
 
-export function createEventUrl(text, localTz=undefined) {
+export function createEventUrl(text) {
   let data;
   try {
-    data = parse(text, localTz);
+    data = parse(text);
     console.log(data);
   } catch (err) {
     console.log(err);
@@ -92,12 +68,10 @@ export function createEventUrl(text, localTz=undefined) {
 }
 
 function main() {
-  // const input = "Brunch with Gary and Mira tomorrow at 10:30am";
-  const input = "Event now";
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  // const timezone = 'Etc/Utc';
+  const input = "Brunch with Gary and Mira tomorrow at 10:30am";
+  // const input = "Event now";
 
-  const url = createEventUrl(input, timezone);
+  const url = createEventUrl(input);
   console.log(url);
 }
 
