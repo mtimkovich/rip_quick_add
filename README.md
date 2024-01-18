@@ -1,16 +1,16 @@
 # RIP Quick Add
 
-Quickly create Google Calendar events from plain text.
+Quickly create Google Calendar events from natural language.
 
 ![preview.gif](https://raw.githubusercontent.com/mtimkovich/rip_quick_add/main/preview.gif)
 
-[Quick Add][article] was a Google Calendar feature that existed from 2012–[2017][rip] that enabled creating calendar events from natural language text input. I loved it and they deprecated it from me ☹️. This is my attempt to carry on its legacy. It uses the [Chrono][chrono] library to extract time data from text.
+Quick Add was a Google Calendar feature that enabled creating calendar events from natural language text input. It was removed for no reason and [upset many people][support]. This is my attempt to carry on its legacy. It uses the [Chrono][chrono] library to extract time data from text.
 
 ## How it works
 
-1. Takes a text input,
-2. parses the input to find date info, and then
-3. returns a Google Calendar URL for adding the event to your calendar.
+1. Takes a text input e.g. "Dinner friday 7pm"
+2. Parses the input to find date info
+3. Returns a Google Calendar URL for adding the event to your calendar.
 
 ## Usage
 
@@ -36,7 +36,7 @@ The "API" this app is using is documented [here][docs].
 
 Max Timkovich
 
-[article]: https://gsuitetips.com/tips/calendar/use-quick-add-to-speed-up-google-calendar-entries/
+[support]: https://support.google.com/calendar/thread/55538170/can-quick-add-be-reinstated?hl=en
 [docs]: https://github.com/InteractionDesignFoundation/add-event-to-calendar-docs/blob/main/services/google.md#google
 [max]: https://timkovi.ch/rip_quick_add
 [chrono]: https://github.com/wanasit/chrono
