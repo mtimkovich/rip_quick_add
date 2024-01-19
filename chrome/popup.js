@@ -1,4 +1,4 @@
-// Same thing but synchronous because we love javascript so much.
+// Same thing but with promises because we love javascript so much.
 function quickAdd(text) {
     const endpoint = 'https://timkovi.ch/rip_quick_add_api';
 

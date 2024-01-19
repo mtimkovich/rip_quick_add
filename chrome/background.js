@@ -27,10 +27,3 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.contextMenus.onClicked.addListener(quickAdd);
-
-// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-//     if (request.type === 'add') {
-//         quickAdd(request.data);
-//     }
-//     return true;
-// });
