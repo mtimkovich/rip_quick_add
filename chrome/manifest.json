@@ -1,7 +1,7 @@
 {
   "name": "Rip Quick Add",
   "description": "Quickly create Google calendar events from natural language.",
-  "version": "1.0",
+  "version": "1.2",
   "manifest_version": 3,
   "permissions": [
     "contextMenus"
@@ -13,9 +13,17 @@
     "service_worker": "background.js"
   },
   "icons": {
-    "16": "icon_16.png",
-    "32": "icon_32.png",
-    "48": "icon_48.png",
-    "128": "icon_128.png"
+    "16": "images/icon_16.png",
+    "32": "images/icon_32.png",
+    "48": "images/icon_48.png",
+    "128": "images/icon_128.png"
+  },
+  "action": {
+    "default_icon": {
+    "16": "images/icon_16.png",
+    "32": "images/icon_32.png"
+    },
+    "default_title": "Quick Add",
+    "default_popup": "popup.html"
   }
 }

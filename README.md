@@ -12,13 +12,15 @@ Quick Add was a Google Calendar feature that enabled creating calendar events fr
 2. Parses the input to find date info
 3. Returns a Google Calendar URL for adding the event to your calendar.
 
+Events can be created by either highlighting date information and selecting the extension in the context menu or by clicking the extension icon and entering event info into the text field.
+
 ## Usage
 
 ### Chrome Extension
 Install the Chrome extension from [Chrome Web Store][webstore].
 
 ### Web App
-Alternatively, I have a running implementation [on my website][max].
+Alternatively, I have a running implementation [on my website][max]. This is useful when you're on a device without Chrome extensions, like a phone.
 
 #### Local
 If you want to run the webapp locally:
@@ -40,5 +42,4 @@ Max Timkovich
 [docs]: https://github.com/InteractionDesignFoundation/add-event-to-calendar-docs/blob/main/services/google.md#google
 [max]: https://timkovi.ch/rip_quick_add
 [chrono]: https://github.com/wanasit/chrono
-[rip]: https://joshdance.medium.com/i-miss-google-cal-quick-add-d4beee62fd27
 [webstore]: https://chrome.google.com/webstore/detail/rip-quick-add/einookkhlkagdckkngcebldmicpilpmk
