@@ -1,5 +1,8 @@
 *.crx
 
+# IDE
+.idea
+
 # Logs
 logs
 *.log

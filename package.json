@@ -1,0 +1,22 @@
+{
+  "name": "rip_quick_add",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c -i src/background.js -o chrome-extension/background.js & rollup -c -i src/popup.js -o chrome-extension/popup.js",
+    "watch": "rollup -c --watch -i src/background.js -o chrome-extension/background.js & rollup -c --watch -i src/popup.js -o chrome-extension/popup.js"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chrono-node": "^2.7.5",
+    "dayjs": "^1.11.10",
+    "rollup": "^4.12.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-multi-input": "^1.4.1",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  }
+}
