@@ -1,7 +1,7 @@
 {
   "name": "rip_quick_add",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.3.0",
+  "description": "Quickly create Google Calendar events from natural language.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,8 +9,8 @@
     "watch": "rollup -c --watch -i src/background.js -o chrome-extension/background.js & rollup -c --watch -i src/popup.js -o chrome-extension/popup.js & rollup --watch -c -i src/options.js -o chrome-extension/options.js"
   },
   "type": "module",
-  "author": "",
-  "license": "ISC",
+  "author": "Max Timkovich",
+  "license": "MIT",
   "devDependencies": {
     "chrono-node": "^2.7.5",
     "dayjs": "^1.11.10",
