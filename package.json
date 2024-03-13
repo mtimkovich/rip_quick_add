@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c -i src/background.js -o chrome-extension/background.js & rollup -c -i src/popup.js -o chrome-extension/popup.js",
-    "watch": "rollup -c --watch -i src/background.js -o chrome-extension/background.js & rollup -c --watch -i src/popup.js -o chrome-extension/popup.js"
+    "build": "rollup -c -i src/background.js -o chrome-extension/background.js & rollup -c -i src/popup.js -o chrome-extension/popup.js & rollup -c -i src/options.js -o chrome-extension/options.js",
+    "watch": "rollup -c --watch -i src/background.js -o chrome-extension/background.js & rollup -c --watch -i src/popup.js -o chrome-extension/popup.js & rollup --watch -c -i src/options.js -o chrome-extension/options.js"
   },
   "type": "module",
   "author": "",
