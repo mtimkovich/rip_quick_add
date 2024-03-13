@@ -18,7 +18,6 @@ function parse(text, lang = EN) {
   if (!text) {
     throw new Error('invalid input text');
   }
-  console.log("lang", lang)
 
   const locale = locales[lang] || en
   const results = locale.parse(text)
