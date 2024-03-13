@@ -135,4 +135,5 @@ dist
 
 chrome-extension/background.js
 chrome-extension/popup.js
+chrome-extension/options.js
 
