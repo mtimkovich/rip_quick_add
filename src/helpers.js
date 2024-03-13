@@ -1,7 +1,8 @@
-import {en, fr} from 'chrono-node';
+import {en, fr, nl, ja, ru, pt, uk, zh, de, es} from 'chrono-node';
 import dayjs from 'dayjs';
+import {EN} from "./constants.js";
 
-const locales = {en, fr}
+const locales = {en, fr, nl, ja, pt, zh, de, es, ru, uk}
 
 function dateRange(start, end, isAllDay) {
   let formatString = 'YYYYMMDD[T]HHmmss';
@@ -13,12 +14,11 @@ function dateRange(start, end, isAllDay) {
   return [start, end].map(t => t.format(formatString)).join('/');
 }
 
-function parse(text, lang = "en") {
-  console.log("lang", lang)
+function parse(text, lang = EN) {
   if (!text) {
     throw new Error('invalid input text');
   }
-
+  console.log("lang", lang)
 
   const locale = locales[lang] || en
   const results = locale.parse(text)

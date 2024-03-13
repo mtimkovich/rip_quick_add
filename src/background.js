@@ -14,23 +14,11 @@ chrome.runtime.onInstalled.addListener(() => {
     title: 'Add to calendar: “%s”',
     contexts: ['selection'],
   });
-
-  chrome.contextMenus.create({
-    parentId: 'id',
-    id: 'en',
-    title: 'English',
-    contexts: ['selection'],
-  });
-
-  chrome.contextMenus.create({
-    parentId: 'id',
-    id: 'fr',
-    title: 'French',
-    contexts: ['selection'],
-  });
 });
 
-chrome.contextMenus.onClicked.addListener((info) => {
-  quickAdd(info.selectionText,  info.menuItemId)
+chrome.contextMenus.onClicked.addListener(async (info) => {
+  const storage = await chrome.storage.sync.get()
+  const lang = storage.lang
+  quickAdd(info.selectionText,  lang)
 });
 

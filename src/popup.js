@@ -10,9 +10,18 @@ function quickAdd(text, lang) {
   }
 }
 
-document.getElementById('add').addEventListener('click', (e) => {
+document.getElementById('add').addEventListener('click', async (e) => {
   const input = document.getElementById('input').value;
-  const lang = document.getElementById('lang')
+  const storage = await chrome.storage.sync.get()
+  const lang = storage.lang
 
-  quickAdd(input, lang.value);
+  quickAdd(input, lang);
+});
+
+document.querySelector('#go-to-options').addEventListener('click', function () {
+  if (chrome.runtime.openOptionsPage) {
+    chrome.runtime.openOptionsPage();
+  } else {
+    window.open(chrome.runtime.getURL('options.html'));
+  }
 });
