@@ -1,5 +1,7 @@
-import * as chrono from 'chrono-node';
+import {en, fr, nl, ja, ru, pt, uk, zh, de, es} from 'chrono-node';
 import dayjs from 'dayjs';
+
+const locales = {en, fr, nl, ja, pt, zh, de, es, ru, uk}
 
 function dateRange(start, end, isAllDay) {
   let formatString = 'YYYYMMDD[T]HHmmss';
@@ -11,12 +13,13 @@ function dateRange(start, end, isAllDay) {
   return [start, end].map(t => t.format(formatString)).join('/');
 }
 
-function parse(text) {
+function parse(text, lang = "en") {
   if (!text) {
     throw new Error('invalid input text');
   }
 
-  const results = chrono.parse(text);
+  const locale = locales[lang] || en
+  const results = locale.parse(text)
 
   if (results.length === 0) {
     throw new Error('could not find time data');
@@ -47,13 +50,13 @@ function parse(text) {
   }
 
   const dates = dateRange(start, end, isAllDay);
-  return { text: eventTitle, dates }
+  return {text: eventTitle, dates}
 }
 
-export function createEventUrl(text) {
+export function createEventUrl(text, lang) {
   let data;
   try {
-    data = parse(text);
+    data = parse(text, lang);
     console.log(data);
   } catch (err) {
     console.log(err);

@@ -6,10 +6,10 @@ const app = Fastify({ logger: true });
 app.register(FastifyBodyParser);
 
 app.post('/rip_quick_add_api', async (request, reply) => {
-  const text = request.body.text;
+  const {text, lang} = request.body;
 
   return {
-    url: createEventUrl(text)
+    url: createEventUrl(text, lang)
   };
 });
 
