@@ -14,6 +14,24 @@ Quick Add was a Google Calendar feature that enabled creating calendar events fr
 
 Events can be created by either highlighting date information and selecting the extension in the context menu or by clicking the extension icon and entering event info into the text field.
 
+## Language
+
+User can choose the language in which they would like to parse the input text in extension options page.
+
+Currently supported languages are:
+* English
+* French
+* Dutch
+* Japanese
+* Russian
+* Portuguese
+* Ukrainian
+* Chinese
+* German
+* Spanish
+
+Supported languages depends on the [chrono-node](https://github.com/wanasit/chrono) node module locales.
+
 ## Usage
 
 ### Chrome Extension
