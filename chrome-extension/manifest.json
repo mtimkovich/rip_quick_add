@@ -1,16 +1,18 @@
 {
   "name": "Rip Quick Add",
   "description": "Quickly create Google calendar events from natural language.",
-  "version": "1.2",
+  "version": "1.3",
   "manifest_version": 3,
   "permissions": [
-    "contextMenus"
-  ],
-  "host_permissions": [
-    "https://timkovi.ch/*"
+    "contextMenus",
+    "storage"
   ],
   "background": {
     "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
   },
   "icons": {
     "16": "images/icon_16.png",
