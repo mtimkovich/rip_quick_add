@@ -52,7 +52,11 @@ Then you can you the following commands for transpile scripts into `chrome-exten
 * `yarn build`: transpile all scripts into `chrome-extension` directory
 * `yarn watch`: transpile all scripts into `chrome-extension` directory and continuously watches on changes to re-transpile
 
-# Author
+## Documentation
+
+The "API" this app is using is documented [here][docs].
+
+## Author
 
 Max Timkovich
 

@@ -1,6 +1,6 @@
-// Saves options to chrome.storage
 import {EN, LOCALES} from "./constants.js";
 
+// Saves options to chrome.storage
 const saveOptions = () => {
   const lang = document.getElementById('lang').value;
 

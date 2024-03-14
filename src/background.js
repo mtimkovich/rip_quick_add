@@ -19,6 +19,6 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener(async (info) => {
   const storage = await chrome.storage.sync.get()
   const lang = storage.lang
-  quickAdd(info.selectionText,  lang)
+  quickAdd(info.selectionText, lang)
 });
 

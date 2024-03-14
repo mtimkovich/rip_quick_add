@@ -10,15 +10,15 @@ export const DE = "de"
 export const ES = "es"
 
 export const LOCALES = {
-  en: { label: "English", value :EN},
-  de: { label: "Deutsch", value :DE},
-  es: { label: "Español", value :ES},
-  fr: { label: "Français", value :FR},
-  ja: { label: "日本語", value :JA},
-  nl: { label: "Nederlands", value :NL},
-  pt: { label: "Português", value :PT},
-  ru: { label: "Русский", value :RU},
-  uk: { label: "українська", value :UK},
-  zh: { label: "中文", value :ZH},
+  en: {label: "English", value: EN},
+  de: {label: "Deutsch", value: DE},
+  es: {label: "Español", value: ES},
+  fr: {label: "Français", value: FR},
+  ja: {label: "日本語", value: JA},
+  nl: {label: "Nederlands", value: NL},
+  pt: {label: "Português", value: PT},
+  ru: {label: "Русский", value: RU},
+  uk: {label: "українська", value: UK},
+  zh: {label: "中文", value: ZH},
 }
 
