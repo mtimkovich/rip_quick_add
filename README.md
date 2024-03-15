@@ -30,7 +30,7 @@ Currently supported languages are:
 * German
 * Spanish
 
-Supported languages depends on the [chrono-node](https://github.com/wanasit/chrono) node module locales.
+Supported languages depends on the [Chrono](https://github.com/wanasit/chrono?tab=readme-ov-file#locales) node module locales.
 
 ## Usage
 
@@ -47,10 +47,9 @@ If you want to develop locally:
 yarn install
 ```
 
-This app uses rollup transpiling to use the Javascript modules pattern.
-Then you can you the following commands for transpile scripts into `chrome-extension` directory:
+This app uses rollup transpiling to use the JavaScript modules pattern.
 * `yarn build`: transpile all scripts into `chrome-extension` directory
-* `yarn watch`: transpile all scripts into `chrome-extension` directory and continuously watches on changes to re-transpile
+* `yarn watch`: transpile all scripts into `chrome-extension` directory and re-transpile automatically on changes
 
 ## Documentation
 
