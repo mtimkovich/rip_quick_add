@@ -12,7 +12,9 @@ Quick Add was a Google Calendar feature that enabled creating calendar events fr
 2. Parses the input to find date info
 3. Returns a Google Calendar URL for adding the event to your calendar.
 
-Events can be created by either highlighting date information and selecting the extension in the context menu or by clicking the extension icon and entering event info into the text field.
+Select any text that has date information (e.g. Movie at 2:30pm tomorrow) and right-click and use the context menu to add the event to your calendar.
+
+Alternatively, events can be created by clicking the app icon and entering the event info in the text box.
 
 ## Language
 
