@@ -1,6 +1,6 @@
 import {en, fr, nl, ja, ru, pt, uk, zh, de, es} from 'chrono-node';
 import dayjs from 'dayjs';
-import {EN} from "./constants.js";
+import {EN, EN_GB} from "./constants.js";
 
 const locales = {en, fr, nl, ja, pt, zh, de, es, ru, uk}
 
@@ -19,7 +19,12 @@ function parse(text, lang = EN) {
     throw new Error('invalid input text');
   }
 
-  const locale = locales[lang] || en
+  let locale;
+  if (lang === EN_GB) {
+    locale = en.GB;
+  } else {
+    locale = locales[lang] || en
+  }
   const results = locale.parse(text)
 
   if (results.length === 0) {
@@ -70,3 +75,10 @@ export function createEventUrl(text, lang) {
   const params = new URLSearchParams(data);
   return `${baseUrl}?${params}`;
 }
+
+// function main() {
+//   const out = parse('Independence Day: 7/4/1776', EN_GB);
+//   console.log(out);
+// }
+
+// main();

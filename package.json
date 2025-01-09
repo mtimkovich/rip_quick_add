@@ -12,11 +12,10 @@
   "author": "Max Timkovich",
   "license": "MIT",
   "devDependencies": {
-    "chrono-node": "^2.7.5",
-    "dayjs": "^1.11.10",
-    "rollup": "^4.12.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-multi-input": "^1.4.1",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "chrono-node": "^2.7.7",
+    "dayjs": "^1.11.13",
+    "rollup": "^4.30.1"
   }
 }
