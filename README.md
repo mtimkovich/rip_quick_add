@@ -39,9 +39,9 @@ Supported languages depends on the [Chrono](https://github.com/wanasit/chrono?ta
 ### Chrome Extension
 Install the Chrome extension from [Chrome Web Store][webstore].
 
-### Chrome Search Engine
+### Browser Search Engine
 
-Adding `https://timkovi.ch/rip_quick_add_api?text=%s` as a search engine in Chrome will allow you to create calendar events from the address bar.
+Adding `https://timkovi.ch/rip_quick_add_api?text=%s` as a search engine in you browser will enable you to create calendar events from the address bar.
 
 ### Web App
 Alternatively, I have a running implementation [on my website][max]. This is useful when you're on a device without Chrome extensions, like a phone.
