@@ -27,6 +27,7 @@ app.get('/rip_quick_add_api', async (request, reply) => {
 });
 
 (async () => {
-  await app.listen({ port: 3000 })
-  console.log('Running on http://localhost:3000/')
+  const port = 3000;
+  await app.listen({ port });
+  console.log(`Running on http://localhost:/${port}`);
 })();

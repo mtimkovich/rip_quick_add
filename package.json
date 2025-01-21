@@ -12,16 +12,15 @@
   "author": "Max Timkovich",
   "license": "MIT",
   "dependencies": {
-    "@fastify/formbody": "^7.0.0",
-    "fastify": "^4.0.0-rc.2"
+    "@fastify/formbody": "^8.0.2",
+    "chrono-node": "^2.7.7",
+    "dayjs": "^1.11.13",
+    "fastify": "^5.2.1"
   },
   "devDependencies": {
-    "chrono-node": "^2.7.5",
-    "dayjs": "^1.11.10",
-    "rollup": "^4.12.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-multi-input": "^1.4.1",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "rollup": "^4.31.0"
   },
   "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }

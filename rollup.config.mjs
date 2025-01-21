@@ -1,10 +1,10 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonJS from 'rollup-plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default {
   plugins: [
     resolve(),
-    commonJS({
+    commonjs({
       include: ['node_modules/**',]
     }),
   ],
