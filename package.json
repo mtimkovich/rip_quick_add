@@ -4,8 +4,8 @@
   "description": "Quickly create Google Calendar events from natural language.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c -i src/background.js -o chrome-extension/background.js && rollup -c -i src/popup.js -o chrome-extension/popup.js && rollup -c -i src/options.js -o chrome-extension/options.js",
-    "watch": "rollup -c --watch -i src/background.js -o chrome-extension/background.js & rollup -c --watch -i src/popup.js -o chrome-extension/popup.js & rollup --watch -c -i src/options.js -o chrome-extension/options.js",
+    "build": "rollup -c",
+    "watch": "rollup -cw",
     "server": "node app.js"
   },
   "type": "module",
