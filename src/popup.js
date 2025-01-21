@@ -22,6 +22,20 @@ document.getElementById('go-to-options').addEventListener('click', () => {
   if (chrome.runtime.openOptionsPage) {
     chrome.runtime.openOptionsPage();
   } else {
-    window.open(chrome.runtime.getURL('options.html'));
+    open(chrome.runtime.getURL('options.html'));
   }
 });
+
+document.getElementById('pop-out').addEventListener('click', () => {
+  chrome.windows.create({
+    url: chrome.runtime.getURL('popup.html'),
+    type: 'popup',
+    height: 250,
+    width: 350,
+  });
+
+  close();
+});
+
+const img = document.getElementById('pop-out-img')
+img.src = chrome.runtime.getURL('popout.png');
