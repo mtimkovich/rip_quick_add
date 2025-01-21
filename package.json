@@ -2,15 +2,19 @@
   "name": "rip_quick_add",
   "version": "1.3.0",
   "description": "Quickly create Google Calendar events from natural language.",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c -i src/background.js -o chrome-extension/background.js && rollup -c -i src/popup.js -o chrome-extension/popup.js && rollup -c -i src/options.js -o chrome-extension/options.js",
-    "watch": "rollup -c --watch -i src/background.js -o chrome-extension/background.js & rollup -c --watch -i src/popup.js -o chrome-extension/popup.js & rollup --watch -c -i src/options.js -o chrome-extension/options.js"
+    "watch": "rollup -c --watch -i src/background.js -o chrome-extension/background.js & rollup -c --watch -i src/popup.js -o chrome-extension/popup.js & rollup --watch -c -i src/options.js -o chrome-extension/options.js",
+    "server": "node app.js"
   },
   "type": "module",
   "author": "Max Timkovich",
   "license": "MIT",
+  "dependencies": {
+    "@fastify/formbody": "^7.0.0",
+    "fastify": "^4.0.0-rc.2"
+  },
   "devDependencies": {
     "chrono-node": "^2.7.5",
     "dayjs": "^1.11.10",
@@ -18,5 +22,6 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-multi-input": "^1.4.1",
     "rollup-plugin-node-resolve": "^5.2.0"
-  }
+  },
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }

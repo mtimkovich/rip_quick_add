@@ -56,6 +56,7 @@ yarn install
 This app uses rollup transpiling to use the JavaScript modules pattern.
 * `yarn build`: transpile all scripts into `chrome-extension` directory
 * `yarn watch`: transpile all scripts into `chrome-extension` directory and re-transpile automatically on changes
+* `yarn server`: run a local instance of the Rip Quick Add API server.
 
 ## Documentation
 
