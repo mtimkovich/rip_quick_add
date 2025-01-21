@@ -14,7 +14,7 @@ function dateRange(start, end, isAllDay) {
   return [start, end].map(t => t.format(formatString)).join('/');
 }
 
-function parse(text, lang = EN) {
+function parse(text, lang) {
   if (!text) {
     throw new Error('invalid input text');
   }
@@ -54,7 +54,7 @@ function parse(text, lang = EN) {
   return {text: eventTitle, dates}
 }
 
-export function createEventUrl(text, lang) {
+export function createEventUrl(text, lang = EN) {
   let data;
   try {
     data = parse(text, lang);

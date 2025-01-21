@@ -1,6 +1,6 @@
 import Fastify from 'fastify';
 import FastifyBodyParser from '@fastify/formbody';
-import { createEventUrl } from './rip_quick_add.js';
+import { createEventUrl } from './src/helpers.js';
 
 const app = Fastify({ logger: true });
 app.register(FastifyBodyParser);
@@ -15,13 +15,15 @@ app.post('/rip_quick_add_api', async (request, reply) => {
 
 app.get('/rip_quick_add_api', async (request, reply) => {
   const text = request.query.text;
-  const url = createEventUrl(text);
+  const lang = request.query.lang;
+
+  const url = createEventUrl(text, lang);
 
   if (url === null) {
-    reply.redirect('https://calendar.google.com/calendar/u/0/r/eventedit');
+    return reply.redirect('https://calendar.google.com/calendar/u/0/r/eventedit');
   }
 
-  reply.redirect(url);
+  return reply.redirect(url);
 });
 
 (async () => {
