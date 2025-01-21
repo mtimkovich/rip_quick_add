@@ -1,7 +1,7 @@
 {
-  "name": "Rip Quick Add",
+  "name": "RIP Quick Add",
   "description": "Quickly create Google calendar events from natural language.",
-  "version": "1.3",
+  "version": "1.4",
   "manifest_version": 3,
   "permissions": [
     "contextMenus",

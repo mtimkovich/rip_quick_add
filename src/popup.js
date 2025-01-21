@@ -12,13 +12,13 @@ function quickAdd(text, lang) {
 
 document.getElementById('add').addEventListener('click', async (e) => {
   const input = document.getElementById('input').value;
-  const storage = await chrome.storage.sync.get()
-  const lang = storage.lang
+  const storage = await chrome.storage.sync.get();
+  const lang = storage.lang;
 
   quickAdd(input, lang);
 });
 
-document.querySelector('#go-to-options').addEventListener('click', function () {
+document.getElementById('go-to-options').addEventListener('click', () => {
   if (chrome.runtime.openOptionsPage) {
     chrome.runtime.openOptionsPage();
   } else {
