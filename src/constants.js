@@ -12,7 +12,7 @@ export const ES = "es"
 
 export const LOCALES = {
   en: {label: "English (US)", value: EN},
-  en_gb: {label: "English(UK)", value: EN_GB},
+  en_gb: {label: "English (GB)", value: EN_GB},
   de: {label: "Deutsch", value: DE},
   es: {label: "Español", value: ES},
   fr: {label: "Français", value: FR},
