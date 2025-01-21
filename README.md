@@ -39,6 +39,12 @@ Supported languages depends on the [Chrono](https://github.com/wanasit/chrono?ta
 ### Chrome Extension
 Install the Chrome extension from [Chrome Web Store][webstore].
 
+### Chrome Search Engine
+
+Adding `https://timkovi.ch/rip_quick_add_api?text=%s` as a search engine in Chrome will enable you to create calendar events from the address bar.
+
+There is an optional `lang` parameter to set the language.
+
 ### Web App
 Alternatively, I have a running implementation [on my website][max]. This is useful when you're on a device without Chrome extensions, like a phone.
 
@@ -52,6 +58,7 @@ yarn install
 This app uses rollup transpiling to use the JavaScript modules pattern.
 * `yarn build`: transpile all scripts into `chrome-extension` directory
 * `yarn watch`: transpile all scripts into `chrome-extension` directory and re-transpile automatically on changes
+* `yarn server`: run a local instance of the RIP Quick Add API server.
 
 ## Documentation
 
