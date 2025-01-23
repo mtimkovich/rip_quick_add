@@ -75,10 +75,3 @@ export function createEventUrl(text, lang = EN) {
   const params = new URLSearchParams(data);
   return `${baseUrl}?${params}`;
 }
-
-// function main() {
-//   const out = parse('Independence Day: 7/4/1776', EN_GB);
-//   console.log(out);
-// }
-
-// main();
