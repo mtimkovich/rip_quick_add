@@ -36,6 +36,3 @@ document.getElementById('pop-out').addEventListener('click', () => {
 
   close();
 });
-
-const img = document.getElementById('pop-out-img')
-img.src = chrome.runtime.getURL('popout.png');
